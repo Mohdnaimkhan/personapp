@@ -31,8 +31,8 @@ public class AppUserController {
 
     @PostMapping("/register")
     public String registerUser(@Valid @ModelAttribute("appUser") AppUser appUser,
-                               BindingResult bindingResult,
-                               Model model) {
+            BindingResult bindingResult,
+            Model model) {
         if (appUserRepository.findByUsername(appUser.getUsername()).isPresent()) {
             bindingResult.rejectValue("username", "error.appUser", "Username already exists");
         }

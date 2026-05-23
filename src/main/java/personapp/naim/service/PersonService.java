@@ -1,11 +1,12 @@
 package personapp.naim.service;
 
-import org.springframework.stereotype.Service;
-import personapp.naim.model.Person;
-import personapp.naim.repository.PersonRepository;
-
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import personapp.naim.model.Person;
+import personapp.naim.repository.PersonRepository;
 
 @Service
 public class PersonService {
@@ -30,5 +31,8 @@ public class PersonService {
 
     public void deleteById(String id) {
         personRepository.deleteById(id);
+    }
+    public Person findMostRecentPerson() {
+        return personRepository.findTopByOrderByIdDesc();
     }
 }

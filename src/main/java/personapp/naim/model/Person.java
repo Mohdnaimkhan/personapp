@@ -6,6 +6,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
@@ -45,6 +47,10 @@ public class Person {
     @Max(value = 150, message = "Age must be 150 or less")
     @Column(nullable = false)
     private Integer age;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private AppUser user;
 
     public Person() {
     }
@@ -94,5 +100,13 @@ public class Person {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public AppUser getUser() {
+        return user;
+    }
+
+    public void setUser(AppUser user) {
+        this.user = user;
     }
 }

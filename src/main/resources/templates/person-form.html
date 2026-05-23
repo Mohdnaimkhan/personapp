@@ -18,7 +18,7 @@
     </style>
 </head>
 <body>
-<div th:replace="fragments/nav :: nav"></div>
+<div th:replace="~{fragments/nav :: nav}"></div>
 <main class="page-shell">
     <div class="form-panel">
         <h1 th:text="${person.id} == null ? 'Add Person' : 'Edit Person'"></h1>
